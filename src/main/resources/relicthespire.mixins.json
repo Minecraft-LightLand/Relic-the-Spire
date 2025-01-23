@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "priority": 1000,
+  "package": "dev.xkmc.relicthespire.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "relicthespire.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

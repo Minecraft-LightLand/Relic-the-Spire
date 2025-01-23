@@ -1,0 +1,17 @@
+{
+  "effect.relicthespire.fragile": "Fragile",
+  "effect.relicthespire.fragile.description": "Increase the damage you take",
+  "item.relicthespire.bag_of_marbles": "Bag Of Marbles",
+  "item.relicthespire.blood_vial": "Blood Vial",
+  "item.relicthespire.burning_blood": "Burning Blood",
+  "item.relicthespire.red_skull": "Red Skull",
+  "relicthespire.effect.cd": "Cool down: %s seconds",
+  "relicthespire.effect.effect_self": "Grant %s",
+  "relicthespire.effect.effect_target": "Inflict %s",
+  "relicthespire.effect.heal": "Restore %s HP",
+  "relicthespire.tooltip.ban": "This item is disabled",
+  "relicthespire.trigger.end_combat": "At the end of combat:",
+  "relicthespire.trigger.enter_combat": "At the start of combat:",
+  "relicthespire.trigger.health": "When user is below %s HP:",
+  "relicthespire.trigger.join_combat": "When enemies join combat:"
+}

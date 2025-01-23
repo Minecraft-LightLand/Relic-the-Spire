@@ -1,0 +1,17 @@
+{
+  "effect.relicthespire.fragile": "ǝןıbɐɹℲ",
+  "effect.relicthespire.fragile.description": "ǝʞɐʇ noʎ ǝbɐɯɐp ǝɥʇ ǝsɐǝɹɔuI",
+  "item.relicthespire.bag_of_marbles": "sǝןqɹɐW ɟO bɐᗺ",
+  "item.relicthespire.blood_vial": "ןɐıΛ pooןᗺ",
+  "item.relicthespire.burning_blood": "pooןᗺ buıuɹnᗺ",
+  "item.relicthespire.red_skull": "ןןnʞS pǝᴚ",
+  "relicthespire.effect.cd": "spuoɔǝs %s :uʍop ןooƆ",
+  "relicthespire.effect.effect_self": "%s ʇuɐɹ⅁",
+  "relicthespire.effect.effect_target": "%s ʇɔıןɟuI",
+  "relicthespire.effect.heal": "ԀH %s ǝɹoʇsǝᴚ",
+  "relicthespire.tooltip.ban": "pǝןqɐsıp sı ɯǝʇı sıɥ⟘",
+  "relicthespire.trigger.end_combat": ":ʇɐqɯoɔ ɟo puǝ ǝɥʇ ʇⱯ",
+  "relicthespire.trigger.enter_combat": ":ʇɐqɯoɔ ɟo ʇɹɐʇs ǝɥʇ ʇⱯ",
+  "relicthespire.trigger.health": ":ԀH %s ʍoןǝq sı ɹǝsn uǝɥM",
+  "relicthespire.trigger.join_combat": ":ʇɐqɯoɔ uıoظ sǝıɯǝuǝ uǝɥM"
+}

@@ -1,0 +1,10 @@
+// 1.20.1	2025-01-23T17:05:15.127858	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+8f10505cf9cd2d191d6f0f873698a207d5de7349 assets/relicthespire/lang/en_ud.json
+8633d7543a2771eafc651a695f58e41aef8c2181 assets/relicthespire/lang/en_us.json
+f7d4e829e9ad214d40821e084c91f60b3965dd1b assets/relicthespire/models/item/bag_of_marbles.json
+e4aac27ad13007b5123712f09312cf80f4c2076a assets/relicthespire/models/item/blood_vial.json
+29a6df4ce6635ae6bd72d8233e546fcac552495b assets/relicthespire/models/item/burning_blood.json
+5af469b7722c8d00a3516771865e91114b064eaa assets/relicthespire/models/item/red_skull.json
+8dcef52d8e746a21fafd4399c1e21816155da036 data/curios/tags/items/belt.json
+3f8c90b7f10b974b5a74d87bdb8c96e06bb9c937 data/curios/tags/items/body.json
+4e0dc2518ea0fbf413240590929252d259df457c data/curios/tags/items/head.json
