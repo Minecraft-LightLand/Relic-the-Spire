@@ -1,0 +1,20 @@
+{
+	"itemGroup.relicthespire.items": "尖塔遗物学",
+	"effect.relicthespire.fragile": "易伤",
+	"effect.relicthespire.fragile.description": "增加受到的伤害",
+	"relicthespire.effect.cd": "冷却:%s秒",
+	"relicthespire.effect.effect_self": "提供%s",
+	"relicthespire.effect.effect_target": "施加%s",
+	"relicthespire.effect.heal": "回复%s血量",
+	"relicthespire.tooltip.ban": "这个物品被禁用了",
+	"relicthespire.trigger.end_combat": "战斗结束时:",
+	"relicthespire.trigger.enter_combat": "战斗开始时:",
+	"relicthespire.trigger.health": "使用者血量低于%s时:",
+	"relicthespire.trigger.join_combat": "敌人加入战斗时:",
+	"relicthespire.effect.absorption": "提供%s点伤害吸收",
+	"relicthespire.effect.damage_boost": "+%s伤害",
+	"relicthespire.effect.min_damage": "你造成的伤害至少为%s点",
+	"relicthespire.trigger.first_attack": "战斗模式的第一次攻击:",
+	"relicthespire.trigger.interval": "每%s秒:",
+	"relicthespire.trigger.nth_attack": "战斗模式的每%s次攻击:"
+}

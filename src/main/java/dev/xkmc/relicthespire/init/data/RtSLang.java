@@ -62,7 +62,8 @@ public class RtSLang {
 	}
 
 	public enum Tooltip implements Info {
-		BAN("This item is disabled", 0);
+		BAN("This item is disabled", 0),
+		ELITE("Enemies with base max health between %s and %s counts as elite", 2);
 
 		final Entry entry;
 

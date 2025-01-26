@@ -14,7 +14,7 @@ public class RtSEffect {
 			() -> new FragileEffect(MobEffectCategory.HARMFUL, 0x000000),
 			"Increase the damage you take");
 
-	public static final RegistryEntry<ThornEffect> THORN = genEffect("thorn",
+	public static final RegistryEntry<ThornEffect> THORN = genEffect("thorns",
 			() -> new ThornEffect(MobEffectCategory.BENEFICIAL, 0x000000),
 			"Deal damage to attacker when attacked with direct damage");
 

@@ -1,14 +1,22 @@
-// 1.20.1	2025-01-25T21:17:48.319107	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-4bf9ab7bfc020157715e0a0025351efb354518f3 assets/relicthespire/lang/en_ud.json
-6571a9724483328e4ee80e46da3a8668dc303915 assets/relicthespire/lang/en_us.json
+// 1.20.1	2025-01-26T16:07:31.622196	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+b0762d835ed05524cb90cd1eab5a27e35c2ec938 assets/relicthespire/lang/en_ud.json
+f52dcbfefc564ec576d63d59fbb11bb712424a65 assets/relicthespire/lang/en_us.json
+41887c65d9909cedb0436fa3bd0b9fb5463b16b9 assets/relicthespire/models/item/akabeko.json
 f7d4e829e9ad214d40821e084c91f60b3965dd1b assets/relicthespire/models/item/bag_of_marbles.json
 e4aac27ad13007b5123712f09312cf80f4c2076a assets/relicthespire/models/item/blood_vial.json
+3ea27884eaa883e8c7e1dbced576b9e7c612ac17 assets/relicthespire/models/item/bronze_scales.json
 29a6df4ce6635ae6bd72d8233e546fcac552495b assets/relicthespire/models/item/burning_blood.json
+2bdf0b354faafa7fed178dc480e7342144ed603c assets/relicthespire/models/item/oddly_smooth_stone.json
+249de96bf2f2be348bcdf3c111c9dbe082a462c9 assets/relicthespire/models/item/orichalcum.json
+1a642b29bb0a946737df833615a4363bc623fe88 assets/relicthespire/models/item/pen_nib.json
+3496f91d747930b1d34826d5f6c99ea0a60f1329 assets/relicthespire/models/item/potion_belt.json
 5af469b7722c8d00a3516771865e91114b064eaa assets/relicthespire/models/item/red_skull.json
+5e50c23da1425106f79eb91e04ecb564721a9fdd assets/relicthespire/models/item/snake_skull.json
 fd7f69032b2e51ecc1a74b76dbcc6a0a663cb936 assets/relicthespire/models/item/the_boot.json
+6d43ca51701b87592b58cee019d6098cb34395ef assets/relicthespire/models/item/toy_orithopter.json
 4dfe2507931d43868ed9d02157a9f2ab84eb8d08 assets/relicthespire/models/item/vajra.json
-8dcef52d8e746a21fafd4399c1e21816155da036 data/curios/tags/items/belt.json
-3f8c90b7f10b974b5a74d87bdb8c96e06bb9c937 data/curios/tags/items/body.json
+4596dbb64016337ecb259c4bc87d20f6669c44da data/curios/tags/items/belt.json
+ee8fda4cce202c89ee58228891dc1cac1c2b418b data/curios/tags/items/body.json
+4fe5aff27c9291dad3bb4ff40b9dd07dfc3a957a data/curios/tags/items/charm.json
 d0d349efcbd7f951daa30de816438f919a678e94 data/curios/tags/items/feet.json
-9aecd0c3ce832e146076a79ffe25095c003413d6 data/curios/tags/items/hands.json
-4e0dc2518ea0fbf413240590929252d259df457c data/curios/tags/items/head.json
+b763d3f930a1868167ef3f7fc03b9033195f6533 data/curios/tags/items/head.json
