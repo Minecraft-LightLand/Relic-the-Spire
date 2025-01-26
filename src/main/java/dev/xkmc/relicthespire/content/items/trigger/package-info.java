@@ -1,7 +1,7 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 
-package dev.xkmc.relicthespire.content.items.triggered;
+package dev.xkmc.relicthespire.content.items.trigger;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

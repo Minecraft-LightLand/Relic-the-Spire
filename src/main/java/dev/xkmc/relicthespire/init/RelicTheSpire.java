@@ -1,8 +1,10 @@
 package dev.xkmc.relicthespire.init;
 
 import com.tterrag.registrate.providers.ProviderType;
+import dev.xkmc.l2damagetracker.contents.attack.AttackEventHandler;
 import dev.xkmc.l2library.base.L2Registrate;
 import dev.xkmc.relicthespire.content.capability.BattleTracker;
+import dev.xkmc.relicthespire.event.RtSAttackListener;
 import dev.xkmc.relicthespire.init.data.RtSLang;
 import dev.xkmc.relicthespire.init.data.RtSModConfig;
 import dev.xkmc.relicthespire.init.data.SlotProvider;
@@ -26,6 +28,8 @@ public class RelicTheSpire {
 		RtSEffect.register();
 		RtSModConfig.init();
 		BattleTracker.register();
+
+		AttackEventHandler.register(4573, new RtSAttackListener());
 	}
 
 	@SubscribeEvent

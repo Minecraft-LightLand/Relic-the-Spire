@@ -1,5 +1,6 @@
 package dev.xkmc.relicthespire.init.data;
 
+import dev.xkmc.relicthespire.init.RelicTheSpire;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.EntityType;
@@ -16,9 +17,10 @@ public class SlotProvider extends CuriosDataProvider {
 
 	@Override
 	public void generate(HolderLookup.Provider provider, ExistingFileHelper existingFileHelper) {
+		createSlot("feet").icon(RelicTheSpire.loc("curios/feet")).order(200);
 		createEntities("spire")
 				.addEntities(EntityType.PLAYER)
-				.addSlots("head", "charm", "belt", "body");
+				.addSlots("head", "charm", "belt", "body", "feet");
 	}
 
 }

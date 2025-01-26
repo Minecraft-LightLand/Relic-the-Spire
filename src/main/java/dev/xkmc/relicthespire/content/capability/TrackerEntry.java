@@ -2,6 +2,7 @@ package dev.xkmc.relicthespire.content.capability;
 
 import dev.xkmc.l2serial.serialization.SerialClass;
 import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
+import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -44,9 +45,10 @@ public class TrackerEntry {
 
 	private LivingEntity cache;
 
-	public static TrackerEntry create(UUID id) {
+	public static TrackerEntry create(UUID id, LivingEntity entity) {
 		var ans = new TrackerEntry();
 		ans.id = id;
+		ans.cache = entity;
 		return ans;
 	}
 
@@ -101,7 +103,7 @@ public class TrackerEntry {
 	}
 
 	private void activate(ServerLevel sl, LivingEntity self) {
-		BaseRelicItem.onTrigger(self, (stack, e) -> e.onMobJoinBattle(stack, self, cache));
+		ITriggerRelicItem.onTrigger(self, (stack, e) -> e.onMobJoinBattle(stack, self, cache));
 	}
 
 	public boolean onCombat(ServerLevel sl, LivingEntity self) {

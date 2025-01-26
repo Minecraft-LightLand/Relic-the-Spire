@@ -29,10 +29,31 @@ public class RtSModConfig {
 			public final ForgeConfigSpec.DoubleValue bloodVialHeal;
 			public final ForgeConfigSpec.IntValue bloodVialCoolDown;
 
+			public final ForgeConfigSpec.IntValue bronzeScalesThornAmplifier;
+
+			public final ForgeConfigSpec.DoubleValue theBootMinDamage;
+
+			public final ForgeConfigSpec.IntValue oddlySmoothStoneSpeedAmplifier;
+
+			public final ForgeConfigSpec.IntValue orichalcumInterval;
+			public final ForgeConfigSpec.DoubleValue orichalcumAbsorption;
+
 			public final ForgeConfigSpec.IntValue redSkullStrengthAmplifier;
 			public final ForgeConfigSpec.DoubleValue redSkullHealthPercentage;
 
+			public final ForgeConfigSpec.IntValue potionBeltMaxSlot;
+			public final ForgeConfigSpec.IntValue potionBeltMaxCount;
+
 			public final ForgeConfigSpec.IntValue vajraStrengthAmplifier;
+
+			public final ForgeConfigSpec.DoubleValue preservedInsectDebuff;
+
+			public final ForgeConfigSpec.DoubleValue akabekoDamageAdd;
+
+			public final ForgeConfigSpec.DoubleValue penNibDamageFactor;
+			public final ForgeConfigSpec.IntValue penNibDamageCount;
+
+			public final ForgeConfigSpec.DoubleValue toyOrithopterHeal;
 
 			private Curios(ForgeConfigSpec.Builder builder) {
 				builder.push("curios");
@@ -47,14 +68,47 @@ public class RtSModConfig {
 				bloodVialCoolDown = builder.comment("Blood Vial: cooldown of healing in ticks")
 						.defineInRange("bloodVialCoolDown", 1800, 0, 1000000);
 
+				bronzeScalesThornAmplifier = builder.comment("Bronze Scales: Thorn effect amplifier")
+						.defineInRange("bronzeScalesThornAmplifier", 2, 0, 100);
+
+				theBootMinDamage = builder.comment("The Boot: minimum damage to deal")
+						.defineInRange("theBootMinDamage", 5d, 0, 10000);
+
+				oddlySmoothStoneSpeedAmplifier = builder.comment("Oddly Smooth Stone: Speed effect amplifier")
+						.defineInRange("oddlySmoothStoneSpeedAmplifier", 0, 0, 10);
+
+				orichalcumInterval = builder.comment("Orichalcum: interval in ticks to grant absorption")
+						.defineInRange("orichalcumInterval", 1800, 1, 100000);
+				orichalcumAbsorption = builder.comment("Orichalcum: amount of absorption to grant")
+						.defineInRange("orichalcumAbsorption", 6d, 0, 1000);
 
 				redSkullStrengthAmplifier = builder.comment("Red Skull: Strength effect amplifier")
 						.defineInRange("redSkullStrengthAmplifier", 2, 0, 100);
 				redSkullHealthPercentage = builder.comment("Red Skull: percentage max health to trigger")
 						.defineInRange("redSkullHealthPercentage", 0.5d, 0, 1);
 
+				potionBeltMaxSlot = builder.comment("Potion Belt: max number of slots")
+						.defineInRange("potionBeltMaxSlot", 5, 1, 9);
+				potionBeltMaxCount = builder.comment("Potion Belt: max number of potions per slot")
+						.defineInRange("potionBeltMaxCount", 5, 1, 64);
+
 				vajraStrengthAmplifier = builder.comment("Vajra: Strength effect amplifier")
 						.defineInRange("vajraStrengthAmplifier", 0, 0, 100);
+
+				preservedInsectDebuff = builder.comment("Preserved Insect: max health to reduce")
+						.defineInRange("perservedInsectDebuff", 0.25, 0, 1);
+
+				akabekoDamageAdd = builder.comment("Akabeko: Damage bonus as addition")
+						.defineInRange("akabekoDamageAdd", 8d, 0, 1000);
+
+				penNibDamageFactor = builder.comment("Pen Nib: Multiplicative damage bonus")
+						.defineInRange("penNibDamageFactor", 1d, 0, 10);
+				penNibDamageCount = builder.comment("Pen Nib: Attack count to trigger")
+						.defineInRange("penNibDamageCount", 10, 1, 100);
+
+				toyOrithopterHeal = builder.comment("Toy Orithopter: healing amount")
+						.defineInRange("toyOrithopterHeal", 5d, 0, 1000);
+
 				builder.pop();
 			}
 
@@ -62,9 +116,16 @@ public class RtSModConfig {
 
 		public static class Misc {
 
+			public final ForgeConfigSpec.DoubleValue eliteStartHealth;
+			public final ForgeConfigSpec.DoubleValue eliteEndHealth;
+
 			private Misc(ForgeConfigSpec.Builder builder) {
 				builder.push("misc");
 
+				eliteStartHealth = builder.comment("Starting base health to count as elite mob")
+						.defineInRange("eliteStartHealth", 45d, 1, 1000);
+				eliteEndHealth = builder.comment("Max base health to count as elite mob")
+						.defineInRange("eliteEndHealth", 99d, 1, 1000);
 
 				builder.pop();
 			}

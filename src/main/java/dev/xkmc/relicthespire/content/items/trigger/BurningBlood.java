@@ -1,6 +1,7 @@
-package dev.xkmc.relicthespire.content.items.triggered;
+package dev.xkmc.relicthespire.content.items.trigger;
 
 import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
+import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
 import dev.xkmc.relicthespire.init.data.RtSLang;
 import dev.xkmc.relicthespire.init.data.RtSModConfig;
 import net.minecraft.network.chat.Component;
@@ -9,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class BurningBlood extends BaseRelicItem {
+public class BurningBlood extends BaseRelicItem implements ITriggerRelicItem {
 
 	private static double amount() {
 		return RtSModConfig.COMMON.curios.burningBloodHeal.get();

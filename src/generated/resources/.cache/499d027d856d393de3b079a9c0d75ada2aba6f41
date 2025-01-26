@@ -1,10 +1,14 @@
-// 1.20.1	2025-01-23T17:05:15.127858	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-8f10505cf9cd2d191d6f0f873698a207d5de7349 assets/relicthespire/lang/en_ud.json
-8633d7543a2771eafc651a695f58e41aef8c2181 assets/relicthespire/lang/en_us.json
+// 1.20.1	2025-01-25T21:17:48.319107	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+4bf9ab7bfc020157715e0a0025351efb354518f3 assets/relicthespire/lang/en_ud.json
+6571a9724483328e4ee80e46da3a8668dc303915 assets/relicthespire/lang/en_us.json
 f7d4e829e9ad214d40821e084c91f60b3965dd1b assets/relicthespire/models/item/bag_of_marbles.json
 e4aac27ad13007b5123712f09312cf80f4c2076a assets/relicthespire/models/item/blood_vial.json
 29a6df4ce6635ae6bd72d8233e546fcac552495b assets/relicthespire/models/item/burning_blood.json
 5af469b7722c8d00a3516771865e91114b064eaa assets/relicthespire/models/item/red_skull.json
+fd7f69032b2e51ecc1a74b76dbcc6a0a663cb936 assets/relicthespire/models/item/the_boot.json
+4dfe2507931d43868ed9d02157a9f2ab84eb8d08 assets/relicthespire/models/item/vajra.json
 8dcef52d8e746a21fafd4399c1e21816155da036 data/curios/tags/items/belt.json
 3f8c90b7f10b974b5a74d87bdb8c96e06bb9c937 data/curios/tags/items/body.json
+d0d349efcbd7f951daa30de816438f919a678e94 data/curios/tags/items/feet.json
+9aecd0c3ce832e146076a79ffe25095c003413d6 data/curios/tags/items/hands.json
 4e0dc2518ea0fbf413240590929252d259df457c data/curios/tags/items/head.json

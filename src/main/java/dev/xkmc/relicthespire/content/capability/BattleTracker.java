@@ -4,10 +4,11 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2serial.serialization.SerialClass;
-import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
+import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
 import dev.xkmc.relicthespire.init.RelicTheSpire;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
@@ -32,6 +33,11 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 
 	@SerialClass.SerialField
 	private boolean prevActive = false;
+
+	@SerialClass.SerialField
+	private int attackCount = 0;
+	@SerialClass.SerialField
+	private long attackStamp = 0;
 
 	@Override
 	public void onClone(boolean isWasDeath) {
@@ -72,13 +78,14 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 	}
 
 	private void activate(ServerPlayer sp) {
-		BaseRelicItem.onTrigger(sp, (stack, e) -> e.onEnterCombatMode(stack, sp));
+		ITriggerRelicItem.onTrigger(sp, (stack, e) -> e.onEnterCombatMode(stack, sp));
 	}
 
 	private void deactivate(ServerPlayer sp, boolean kill) {
 		if (kill) {
-			BaseRelicItem.onTrigger(sp, (stack, e) -> e.killLastTarget(stack, sp));
+			ITriggerRelicItem.onTrigger(sp, (stack, e) -> e.killLastTarget(stack, sp));
 		}
+		attackCount = 0;
 	}
 
 	private void tryActivate(ServerPlayer sp) {
@@ -88,8 +95,21 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 		}
 	}
 
+	private TrackerEntry getOrCreate(LivingEntity target) {
+		return entries.computeIfAbsent(target.getUUID(), e -> TrackerEntry.create(e, target));
+	}
+
+	public int getAttackCount() {
+		return attackCount;
+	}
+
+	public boolean isValidAttackStamp(Level level) {
+		long diff = level.getGameTime() - attackStamp;
+		return diff >= 0 && diff <= 1;
+	}
+
 	public void onAttack(LivingEntity target) {
-		var entry = entries.computeIfAbsent(target.getUUID(), TrackerEntry::create);
+		var entry = getOrCreate(target);
 		if (player instanceof ServerPlayer sp) {
 			if (entry.onCombat(sp.serverLevel(), sp)) {
 				tryActivate(sp);
@@ -99,17 +119,22 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 
 	public void onTarget(LivingEntity target) {
 		if (player instanceof ServerPlayer sp) {
-			var entry = entries.computeIfAbsent(target.getUUID(), TrackerEntry::create);
+			var entry = getOrCreate(target);
 			if (entry.onTarget(sp.serverLevel(), sp)) {
 				tryActivate(sp);
 			}
 		}
 	}
 
+	public void onInitiateAttack(LivingEntity self) {
+		attackCount++;
+		attackStamp = self.level().getGameTime();
+	}
+
 	public void onAttacked(@Nullable LivingEntity attacker) {
 		if (attacker == null) return;
 		if (player instanceof ServerPlayer sp) {
-			var entry = entries.computeIfAbsent(attacker.getUUID(), TrackerEntry::create);
+			var entry = getOrCreate(attacker);
 			if (entry.onCombat(sp.serverLevel(), sp)) {
 				tryActivate(sp);
 			}
@@ -118,7 +143,7 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 
 	public void onKill(LivingEntity entity) {
 		if (player instanceof ServerPlayer sp) {
-			var entry = entries.computeIfAbsent(entity.getUUID(), TrackerEntry::create);
+			var entry = getOrCreate(entity);
 			entry.onKill();
 			updateActivity(sp, true);
 		}
@@ -126,4 +151,5 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 
 	public static void register() {
 	}
+
 }
