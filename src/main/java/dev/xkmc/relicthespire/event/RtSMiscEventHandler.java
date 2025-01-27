@@ -1,5 +1,6 @@
 package dev.xkmc.relicthespire.event;
 
+import dev.xkmc.relicthespire.content.items.special.PotionBelt;
 import dev.xkmc.relicthespire.content.items.special.SnakeSkull;
 import dev.xkmc.relicthespire.content.items.special.ToyOrnithopter;
 import dev.xkmc.relicthespire.init.RelicTheSpire;
@@ -21,7 +22,7 @@ public class RtSMiscEventHandler {
 		if (event.isCanceled()) return;
 		if (event.getItemStack().is(Items.SPLASH_POTION) || event.getItemStack().is(Items.LINGERING_POTION)) {
 			ToyOrnithopter.trigger(event.getEntity());
-			//TODO on use: potion belt
+			PotionBelt.onThrowPotion(event.getEntity(), event);
 		}
 	}
 
@@ -29,7 +30,7 @@ public class RtSMiscEventHandler {
 	public static void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
 		if (event.getItem().is(Items.POTION)) {
 			ToyOrnithopter.trigger(event.getEntity());
-			//TODO on use: potion belt
+			PotionBelt.consumePotion(event.getEntity(), event);
 		}
 	}
 

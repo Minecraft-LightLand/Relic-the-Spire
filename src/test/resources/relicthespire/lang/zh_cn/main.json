@@ -1,20 +1,37 @@
 {
 	"itemGroup.relicthespire.items": "尖塔遗物学",
-	"effect.relicthespire.fragile": "易伤",
-	"effect.relicthespire.fragile.description": "增加受到的伤害",
-	"relicthespire.effect.cd": "冷却:%s秒",
-	"relicthespire.effect.effect_self": "提供%s",
-	"relicthespire.effect.effect_target": "施加%s",
-	"relicthespire.effect.heal": "回复%s血量",
-	"relicthespire.tooltip.ban": "这个物品被禁用了",
-	"relicthespire.trigger.end_combat": "战斗结束时:",
-	"relicthespire.trigger.enter_combat": "战斗开始时:",
-	"relicthespire.trigger.health": "使用者血量低于%s时:",
-	"relicthespire.trigger.join_combat": "敌人加入战斗时:",
-	"relicthespire.effect.absorption": "提供%s点伤害吸收",
-	"relicthespire.effect.damage_boost": "+%s伤害",
-	"relicthespire.effect.min_damage": "你造成的伤害至少为%s点",
-	"relicthespire.trigger.first_attack": "战斗模式的第一次攻击:",
-	"relicthespire.trigger.interval": "每%s秒:",
-	"relicthespire.trigger.nth_attack": "战斗模式的每%s次攻击:"
+	"effect.relicthespire": {
+		"fragile": "易伤",
+		"fragile.description": "增加受到的伤害",
+		"thorns": "荆棘",
+		"thorns.description": "收到直接伤害时，对攻击者造成伤害"
+	},
+	"relicthespire": {
+		"special.potion_belt_desc": "可以持有%s种各%s个药水",
+		"special.potion_belt_use": "当你使用药水时，自动使用药水腰带中的同种药水替换",
+		"tooltip.ban": "这个物品被禁用了",
+		"tooltip.elite": "本征最大血量在%s~%s之间的敌人为精英敌人",
+		"effect": {
+			"cd": "冷却:%s秒",
+			"effect_self": "提供%s",
+			"effect_target": "施加%s",
+			"heal": "回复%s血量",
+			"absorption": "提供%s点伤害吸收",
+			"damage_boost": "+%s伤害",
+			"min_damage": "你造成的伤害至少为%s点",
+			"effect_boost": "当你施加%s时，+1效果等级",
+			"reduce_health": "降低%s最大血量"
+		},
+		"trigger": {
+			"end_combat": "战斗结束时:",
+			"enter_combat": "战斗开始时:",
+			"health": "使用者血量低于%s时:",
+			"join_combat": "敌人加入战斗时:",
+			"first_attack": "战斗模式的第一次攻击:",
+			"interval": "每%s秒:",
+			"nth_attack": "战斗模式的每%s次攻击:",
+			"join_combat_elite": "精英敌人加入战斗时:",
+			"use_potion": "使用药水时:"
+		}
+	}
 }

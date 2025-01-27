@@ -17,7 +17,7 @@ public class SlotProvider extends CuriosDataProvider {
 
 	@Override
 	public void generate(HolderLookup.Provider provider, ExistingFileHelper existingFileHelper) {
-		createSlot("feet").icon(RelicTheSpire.loc("curios/feet")).order(200);
+		createSlot("feet").icon(RelicTheSpire.loc("slot/empty_feet_slot")).order(200);
 		createEntities("spire")
 				.addEntities(EntityType.PLAYER)
 				.addSlots("head", "charm", "belt", "body", "feet");

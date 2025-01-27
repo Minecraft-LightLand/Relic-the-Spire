@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "relicthespire:item/toy_orithopter"
+    "layer0": "relicthespire:item/toy_ornithopter"
   }
 }

@@ -64,7 +64,7 @@ public class RtSItems {
 		//PRESERVED_INSECT = reg("preserved_insect", PreservedInsect::new, "charm");
 		AKABEKO = reg("akabeko", Akabeko::new, "charm");
 		PEN_NIB = reg("pen_nib", PenNib::new, "charm");
-		TOY_ORNITHOPTER = reg("toy_orithopter", ToyOrnithopter::new, "charm");
+		TOY_ORNITHOPTER = reg("toy_ornithopter", ToyOrnithopter::new, "charm");
 	}
 
 	private static <T extends BaseRelicItem> ItemEntry<T> reg(String id, NonNullFunction<Item.Properties, T> factory, String slot) {

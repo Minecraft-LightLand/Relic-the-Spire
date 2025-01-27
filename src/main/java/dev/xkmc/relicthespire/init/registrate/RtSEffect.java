@@ -11,11 +11,11 @@ import net.minecraft.world.effect.MobEffectCategory;
 public class RtSEffect {
 
 	public static final RegistryEntry<FragileEffect> FRAGILE = genEffect("fragile",
-			() -> new FragileEffect(MobEffectCategory.HARMFUL, 0x000000),
+			() -> new FragileEffect(MobEffectCategory.HARMFUL, 0xce6274),
 			"Increase the damage you take");
 
 	public static final RegistryEntry<ThornEffect> THORN = genEffect("thorns",
-			() -> new ThornEffect(MobEffectCategory.BENEFICIAL, 0x000000),
+			() -> new ThornEffect(MobEffectCategory.BENEFICIAL, 0xc5f0e5),
 			"Deal damage to attacker when attacked with direct damage");
 
 	private static <T extends MobEffect> RegistryEntry<T> genEffect(String name, NonNullSupplier<T> sup, String desc) {

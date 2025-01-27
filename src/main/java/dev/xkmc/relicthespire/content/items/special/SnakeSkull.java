@@ -20,7 +20,7 @@ public class SnakeSkull extends BaseRelicItem {
 	}
 
 	public static void trigger(Player player, MobEffectInstance ins) {
-		SnakeSkull item = RtSItems.SNAKE_SKULL.get();
+		var item = RtSItems.SNAKE_SKULL.get();
 		if (!item.isEnabled()) return;
 		CuriosApi.getCuriosInventory(player).resolve().flatMap(e -> e.findFirstCurio(item))
 				.ifPresent(ctx -> new EffectBuilder(ins).setAmplifier(ins.getAmplifier() + 1));
