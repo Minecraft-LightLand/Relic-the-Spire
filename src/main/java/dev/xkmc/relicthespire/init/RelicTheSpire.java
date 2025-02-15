@@ -7,6 +7,7 @@ import dev.xkmc.relicthespire.content.capability.BattleTracker;
 import dev.xkmc.relicthespire.event.RtSAttackListener;
 import dev.xkmc.relicthespire.init.data.RtSLang;
 import dev.xkmc.relicthespire.init.data.RtSModConfig;
+import dev.xkmc.relicthespire.init.data.RtSRecipe;
 import dev.xkmc.relicthespire.init.data.SlotProvider;
 import dev.xkmc.relicthespire.init.registrate.RtSEffect;
 import dev.xkmc.relicthespire.init.registrate.RtSItems;
@@ -35,6 +36,7 @@ public class RelicTheSpire {
 	@SubscribeEvent
 	public static void onDataGen(GatherDataEvent event) {
 		REGISTRATE.addDataGenerator(ProviderType.LANG, RtSLang::addLang);
+		REGISTRATE.addDataGenerator(ProviderType.RECIPE, RtSRecipe::genRecipe);
 
 		var gen = event.getGenerator();
 		var out = gen.getPackOutput();

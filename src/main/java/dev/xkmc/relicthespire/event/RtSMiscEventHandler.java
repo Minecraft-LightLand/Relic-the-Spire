@@ -21,7 +21,7 @@ public class RtSMiscEventHandler {
 	public static void onItemUse(PlayerInteractEvent.RightClickItem event) {
 		if (event.isCanceled()) return;
 		if (event.getItemStack().is(Items.SPLASH_POTION) || event.getItemStack().is(Items.LINGERING_POTION)) {
-			ToyOrnithopter.trigger(event.getEntity());
+			ToyOrnithopter.trigger(event.getEntity(), event.getItemStack());
 			PotionBelt.onThrowPotion(event.getEntity(), event);
 		}
 	}
@@ -29,14 +29,14 @@ public class RtSMiscEventHandler {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
 		if (event.getItem().is(Items.POTION)) {
-			ToyOrnithopter.trigger(event.getEntity());
+			ToyOrnithopter.trigger(event.getEntity(), event.getItem());
 			PotionBelt.consumePotion(event.getEntity(), event);
 		}
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public static void onEffectTest(MobEffectEvent.Added event) {
-		if (event.getEffectSource() instanceof Player player) {
+		if (event.getEffectSource() instanceof Player player && event.getEntity() != player) {
 			var ins = event.getEffectInstance();
 			if (ins != null && ins.getEffect() == MobEffects.POISON) {
 				SnakeSkull.trigger(player, ins);

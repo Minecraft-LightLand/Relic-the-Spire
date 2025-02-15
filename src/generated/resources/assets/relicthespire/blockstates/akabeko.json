@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "relicthespire:block/akabeko",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "relicthespire:block/akabeko"
+    },
+    "facing=south": {
+      "model": "relicthespire:block/akabeko",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "relicthespire:block/akabeko",
+      "y": 270
+    }
+  }
+}

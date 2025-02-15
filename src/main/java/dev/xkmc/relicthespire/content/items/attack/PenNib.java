@@ -28,9 +28,9 @@ public class PenNib extends BaseRelicItem implements IAttackRelicItem {
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
-		list.add(RtSLang.Trigger.NTH_ATTACK.yellow(RtSLang.num(count())));
-		list.add(RtSLang.Effects.DAMAGE_BOOST.bullet(RtSLang.perc(factor())));
+	public void addText(List<Component> list, ItemStack stack) {
+		list.add(RtSLang.Trigger.NTH_ATTACK.gray(RtSLang.num(count())));
+		list.add(RtSLang.Effects.DAMAGE_BOOST.bulletBlue(RtSLang.perc(factor())));
 	}
 
 	@Override

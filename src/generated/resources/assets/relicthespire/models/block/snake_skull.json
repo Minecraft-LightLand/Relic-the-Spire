@@ -1,0 +1,7 @@
+{
+  "parent": "relicthespire:custom/snake_skull",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "relicthespire:block/snake_skull"
+  }
+}

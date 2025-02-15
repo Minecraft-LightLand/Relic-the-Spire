@@ -26,8 +26,8 @@ public class PreservedInsect extends BaseRelicItem implements ITriggerRelicItem 
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
-		list.add(RtSLang.Trigger.JOIN_COMBAT_ELITE.yellow());
+	public void addText(List<Component> list, ItemStack stack) {
+		list.add(RtSLang.Trigger.JOIN_COMBAT_ELITE.gray());
 		list.add(RtSLang.Effects.REDUCE_HEALTH.bullet(RtSLang.perc(amount())));
 		list.add(RtSLang.Tooltip.ELITE.gray(
 				RtSLang.num(MobUtils.start()),

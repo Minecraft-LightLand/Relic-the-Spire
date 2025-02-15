@@ -1,5 +1,6 @@
 package dev.xkmc.relicthespire.content.items.trigger;
 
+import dev.xkmc.relicthespire.content.capability.BattleTracker;
 import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
 import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
 import dev.xkmc.relicthespire.init.data.RtSLang;
@@ -32,13 +33,13 @@ public class BloodVial extends BaseRelicItem implements ITriggerRelicItem {
 			if (cd.isOnCooldown(this))
 				return;
 			cd.addCooldown(this, cd());
-			self.heal((float) amount());
+			BattleTracker.heal(self, (float) amount());
 		}
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
-		list.add(RtSLang.Trigger.JOIN_COMBAT.yellow());
+	public void addText(List<Component> list, ItemStack stack) {
+		list.add(RtSLang.Trigger.JOIN_COMBAT.gray());
 		list.add(RtSLang.Effects.HEAL.bullet(RtSLang.num(amount())));
 		list.add(RtSLang.Effects.CD.gray(RtSLang.num(cd() / 20d)));
 	}

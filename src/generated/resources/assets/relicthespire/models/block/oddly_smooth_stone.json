@@ -1,0 +1,7 @@
+{
+  "parent": "relicthespire:custom/oddly_smooth_stone",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "relicthespire:block/oddly_smooth_stone"
+  }
+}

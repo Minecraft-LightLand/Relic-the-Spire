@@ -7,6 +7,7 @@ import dev.xkmc.l2damagetracker.init.data.L2DamageTypes;
 import dev.xkmc.l2library.init.events.GeneralEventHandler;
 import dev.xkmc.relicthespire.content.capability.BattleTracker;
 import dev.xkmc.relicthespire.content.items.core.IAttackRelicItem;
+import dev.xkmc.relicthespire.content.items.core.IBaseRelicItem;
 import dev.xkmc.relicthespire.init.registrate.RtSEffect;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -27,7 +28,8 @@ public class RtSAttackListener implements AttackListener {
 		if (cache.getAttacker() instanceof Player player) {
 			player.getCapability(BattleTracker.CAPABILITY).resolve().ifPresent(e ->
 					e.onAttack(cache.getAttackTarget()));
-		}if (cache.getAttackTarget() instanceof Player player) {
+		}
+		if (cache.getAttackTarget() instanceof Player player) {
 			player.getCapability(BattleTracker.CAPABILITY).resolve().ifPresent(e ->
 					e.onAttacked(cache.getAttacker()));
 		}
@@ -38,7 +40,7 @@ public class RtSAttackListener implements AttackListener {
 		var attacker = cache.getAttacker();
 		var target = cache.getAttackTarget();
 		if (attacker instanceof Player player) {
-			IAttackRelicItem.onTrigger(player, (stack, e) -> e.onAttackTarget(stack, cache));
+			IBaseRelicItem.onSearch(player, IAttackRelicItem.class, (stack, e) -> e.onAttackTarget(stack, cache));
 		}
 		if (cache.getAttacker() != null) {
 			var source = cache.getLivingHurtEvent().getSource();
@@ -54,7 +56,7 @@ public class RtSAttackListener implements AttackListener {
 	@Override
 	public void onDamage(AttackCache cache, ItemStack weapon) {
 		if (cache.getAttackTarget() instanceof Player player) {
-			IAttackRelicItem.onTrigger(player, (stack, e) -> e.onDamaged(stack, cache));
+			IBaseRelicItem.onSearch(player, IAttackRelicItem.class, (stack, e) -> e.onDamaged(stack, cache));
 		}
 	}
 

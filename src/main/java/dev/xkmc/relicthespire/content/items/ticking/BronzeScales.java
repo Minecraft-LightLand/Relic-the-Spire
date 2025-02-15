@@ -21,12 +21,12 @@ public class BronzeScales extends BaseRelicItem {
 	}
 
 	@Override
-	protected void tick(ItemStack stack, LivingEntity user) {
+	public void tick(ItemStack stack, LivingEntity user) {
 		inflictAmbient(RtSEffect.THORN.get(), amp(), user, user);
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
+	public void addText(List<Component> list, ItemStack stack) {
 		list.add(RtSLang.Effects.EFFECT_SELF.gray(RtSLang.effect(RtSEffect.THORN.get(), amp())));
 	}
 

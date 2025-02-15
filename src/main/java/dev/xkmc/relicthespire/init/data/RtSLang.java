@@ -5,6 +5,7 @@ import dev.xkmc.relicthespire.init.RelicTheSpire;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -47,22 +48,24 @@ public class RtSLang {
 			return translate(desc(), (Object[]) objs);
 		}
 
-		default MutableComponent yellow(MutableComponent... objs) {
-			return get(objs).withStyle(ChatFormatting.YELLOW);
-		}
-
 		default MutableComponent gray(MutableComponent... objs) {
 			return get(objs).withStyle(ChatFormatting.GRAY);
 		}
 
 		default MutableComponent bullet(MutableComponent... objs) {
-			return Component.literal("- ").append(get(objs)).withStyle(ChatFormatting.GRAY);
+			return RtSLang.bullet(get(objs)).withStyle(ChatFormatting.GRAY);
 		}
+
+		default MutableComponent bulletBlue(MutableComponent... objs) {
+			return bullet(get(objs)).withStyle(ChatFormatting.BLUE);
+		}
+
 
 	}
 
 	public enum Tooltip implements Info {
 		BAN("This item is disabled", 0),
+		SHIFT("Press [%s] to reveal mechanics", 1),
 		ELITE("Enemies with base max health between %s and %s counts as elite", 2);
 
 		final Entry entry;
@@ -74,6 +77,10 @@ public class RtSLang {
 		@Override
 		public Entry entry() {
 			return entry;
+		}
+
+		public MutableComponent shift() {
+			return gray(Component.literal("SHIFT").withStyle(ChatFormatting.GOLD));
 		}
 
 	}
@@ -111,8 +118,7 @@ public class RtSLang {
 		ABSORPTION("Grant %s absorption", 1),
 		DAMAGE_BOOST("+%s damage", 1),
 		EFFECT_BOOST("When you inflict %s, +1 effect level", 1),
-		REDUCE_HEALTH("Reduce enemy max health by %s", 1)
-		;
+		REDUCE_HEALTH("Reduce enemy max health by %s", 1);
 
 		final Entry entry;
 
@@ -126,7 +132,6 @@ public class RtSLang {
 		}
 
 	}
-
 
 	public enum Special implements Info {
 		POTION_BELT_DESC("May hold %s kinds of potion and %s of each kind", 2),
@@ -159,6 +164,9 @@ public class RtSLang {
 				pvd.add(e.desc(), e.entry().def());
 			}
 		}
+		pvd.add("curios.identifier.feet", "Feet");
+		pvd.add("curios.modifiers.feet", "When on feet:");
+
 		lore(pvd, "burning_blood", "Your body's own blood burns with an undying rage.");
 		lore(pvd, "ring_of_the_snake", "Made from a fossilized snake. Represents great skill as a huntress.");
 		lore(pvd, "cracked_core", "The mysterious life force which powers the Automatons within the Spire. It appears to be cracked.");
@@ -199,18 +207,23 @@ public class RtSLang {
 
 	private static final DecimalFormat SINGLE = new DecimalFormat("#.0");
 	private static final DecimalFormat DOUBLE = new DecimalFormat("#.00");
+	private static final Style NUM = Style.EMPTY.withColor(0x87ceeb);
+
+	public static MutableComponent bullet(Component comp) {
+		return Component.literal(" ").append(comp);
+	}
 
 	public static MutableComponent num(double amount) {
 		if (Math.abs(amount) < 1) {
-			Component.literal(DOUBLE.format(amount)).withStyle(ChatFormatting.AQUA);
+			Component.literal(DOUBLE.format(amount)).withStyle(NUM);
 		} else if (Math.abs(Math.round(amount) - amount) < 0.01) {
-			return Component.literal(Math.round(amount) + "").withStyle(ChatFormatting.AQUA);
+			return Component.literal(Math.round(amount) + "").withStyle(NUM);
 		}
-		return Component.literal(SINGLE.format(amount)).withStyle(ChatFormatting.AQUA);
+		return Component.literal(SINGLE.format(amount)).withStyle(NUM);
 	}
 
 	public static MutableComponent perc(double amount) {
-		return Component.literal(Math.round(amount * 100) + "%").withStyle(ChatFormatting.AQUA);
+		return Component.literal(Math.round(amount * 100) + "%").withStyle(NUM);
 	}
 
 	public static MutableComponent effect(MobEffect eff, int amp) {

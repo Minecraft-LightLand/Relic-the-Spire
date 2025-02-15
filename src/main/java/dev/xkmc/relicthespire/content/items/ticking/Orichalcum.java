@@ -24,15 +24,15 @@ public class Orichalcum extends BaseRelicItem {
 	}
 
 	@Override
-	protected void tick(ItemStack stack, LivingEntity user) {
+	public void tick(ItemStack stack, LivingEntity user) {
 		if (user.tickCount % interval() == 0) {
 			user.setAbsorptionAmount(Math.max(user.getAbsorptionAmount(), (float) amount()));
 		}
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
-		list.add(RtSLang.Trigger.INTERVAL.yellow(RtSLang.num(interval() / 20d)));
+	public void addText(List<Component> list, ItemStack stack) {
+		list.add(RtSLang.Trigger.INTERVAL.gray(RtSLang.num(interval() / 20d)));
 		list.add(RtSLang.Effects.ABSORPTION.bullet(RtSLang.num(amount())));
 	}
 

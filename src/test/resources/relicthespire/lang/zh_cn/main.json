@@ -1,5 +1,7 @@
 {
 	"itemGroup.relicthespire.items": "尖塔遗物学",
+	"curios.identifier.feet": "脚部",
+	"curios.modifiers.feet": "穿在脚上时:",
 	"effect.relicthespire": {
 		"fragile": "易伤",
 		"fragile.description": "增加受到的伤害",
@@ -9,8 +11,11 @@
 	"relicthespire": {
 		"special.potion_belt_desc": "可以持有%s种各%s个药水",
 		"special.potion_belt_use": "当你使用药水时，自动使用药水腰带中的同种药水替换",
-		"tooltip.ban": "这个物品被禁用了",
-		"tooltip.elite": "本征最大血量在%s~%s之间的敌人为精英敌人",
+		"tooltip": {
+			"ban": "这个物品被禁用了",
+			"elite": "本征最大血量在%s~%s之间的敌人为精英敌人",
+			"shift": "按[%s]显示具体机制"
+		},
 		"effect": {
 			"cd": "冷却:%s秒",
 			"effect_self": "提供%s",

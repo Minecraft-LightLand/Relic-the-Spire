@@ -27,7 +27,7 @@ public class TheBoot extends BaseRelicItem implements IAttackRelicItem {
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
+	public void addText(List<Component> list, ItemStack stack) {
 		list.add(RtSLang.Effects.MIN_DAMAGE.gray(RtSLang.num(val())));
 	}
 

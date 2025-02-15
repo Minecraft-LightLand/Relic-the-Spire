@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,wall=false": {
+      "model": "relicthespire:block/snake_skull",
+      "y": 90
+    },
+    "facing=east,wall=true": {
+      "model": "relicthespire:block/snake_skull_wall",
+      "y": 90
+    },
+    "facing=north,wall=false": {
+      "model": "relicthespire:block/snake_skull"
+    },
+    "facing=north,wall=true": {
+      "model": "relicthespire:block/snake_skull_wall"
+    },
+    "facing=south,wall=false": {
+      "model": "relicthespire:block/snake_skull",
+      "y": 180
+    },
+    "facing=south,wall=true": {
+      "model": "relicthespire:block/snake_skull_wall",
+      "y": 180
+    },
+    "facing=west,wall=false": {
+      "model": "relicthespire:block/snake_skull",
+      "y": 270
+    },
+    "facing=west,wall=true": {
+      "model": "relicthespire:block/snake_skull_wall",
+      "y": 270
+    }
+  }
+}

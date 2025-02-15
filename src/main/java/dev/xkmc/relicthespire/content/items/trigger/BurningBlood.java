@@ -1,5 +1,6 @@
 package dev.xkmc.relicthespire.content.items.trigger;
 
+import dev.xkmc.relicthespire.content.capability.BattleTracker;
 import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
 import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
 import dev.xkmc.relicthespire.init.data.RtSLang;
@@ -22,12 +23,12 @@ public class BurningBlood extends BaseRelicItem implements ITriggerRelicItem {
 
 	@Override
 	public void killLastTarget(ItemStack stack, LivingEntity self) {
-		self.heal((float) amount());
+		BattleTracker.heal(self, (float) amount());
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
-		list.add(RtSLang.Trigger.END_COMBAT.yellow());
+	public void addText(List<Component> list, ItemStack stack) {
+		list.add(RtSLang.Trigger.END_COMBAT.gray());
 		list.add(RtSLang.Effects.HEAL.bullet(RtSLang.num(amount())));
 	}
 }

@@ -28,8 +28,8 @@ public class BagOfMarbles extends BaseRelicItem implements ITriggerRelicItem {
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
-		list.add(RtSLang.Trigger.JOIN_COMBAT.yellow());
+	public void addText(List<Component> list, ItemStack stack) {
+		list.add(RtSLang.Trigger.JOIN_COMBAT.gray());
 		list.add(RtSLang.Effects.EFFECT_TARGET.bullet(RtSLang.effect(RtSEffect.FRAGILE.get(), 1, dur())));
 	}
 

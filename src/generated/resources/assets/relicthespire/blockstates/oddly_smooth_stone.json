@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "relicthespire:block/oddly_smooth_stone",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "relicthespire:block/oddly_smooth_stone"
+    },
+    "facing=south": {
+      "model": "relicthespire:block/oddly_smooth_stone",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "relicthespire:block/oddly_smooth_stone",
+      "y": 270
+    }
+  }
+}

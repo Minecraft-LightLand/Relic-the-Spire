@@ -1,17 +1,15 @@
 package dev.xkmc.relicthespire.content.items.core;
 
-import dev.xkmc.l2library.base.effects.EffectUtil;
-import dev.xkmc.relicthespire.init.data.RtSLang;
-import net.minecraft.ChatFormatting;
+import dev.xkmc.relicthespire.content.items.util.TokenRelicComponent;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -20,32 +18,31 @@ import java.util.List;
 
 public abstract class BaseRelicItem extends Item implements ICurioItem, IBaseRelicItem {
 
+	@Nullable
+	private final TokenRelicComponent<?> token;
+
 	public BaseRelicItem(Properties prop) {
-		super(prop.stacksTo(1));
+		this(prop, null);
 	}
 
-	public boolean isEnabled() {
-		return true;
+	public BaseRelicItem(Properties prop, @Nullable TokenRelicComponent<?> token) {
+		super(prop.stacksTo(1));
+		this.token = token;
+	}
+
+	@Override
+	public ResourceLocation getId() {
+		return builtInRegistryHolder().key().location();
+	}
+
+	@Override
+	public @Nullable TokenRelicComponent<?> getToken() {
+		return token;
 	}
 
 	@Override
 	public final void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> list, TooltipFlag flag) {
-		if (!isEnabled()) {
-			list.add(RtSLang.Tooltip.BAN.get().withStyle(ChatFormatting.RED));
-			return;
-		}
-		if (!specialTooltip(stack) && TooltipHelper.showLore(level)) {
-			var id = ForgeRegistries.ITEMS.getKey(this);
-			if (id != null) {
-				list.add(RtSLang.translate(id.getNamespace() + ".item_lore." + id.getPath()));
-			}
-		}
-		if (specialTooltip(stack) || TooltipHelper.showDesc(level))
-			addText(list, stack);
-	}
-
-	protected boolean specialTooltip(ItemStack stack) {
-		return false;
+		appendHoverTextImpl(stack, level, list);
 	}
 
 	@Override
@@ -54,20 +51,15 @@ public abstract class BaseRelicItem extends Item implements ICurioItem, IBaseRel
 		tick(stack, slotContext.entity());
 	}
 
-	protected abstract void addText(List<Component> list, ItemStack stack);
-
-	protected void tick(ItemStack stack, LivingEntity user) {
-
-	}
-
-	protected static void inflictAmbient(MobEffect eff, int amp, LivingEntity target, LivingEntity user) {
-		EffectUtil.refreshEffect(target, new MobEffectInstance(eff, 40, amp,
-				true, false, true), EffectUtil.AddReason.NONE, user);
-	}
-
-	protected static void inflictActive(MobEffect eff, int dur, int amp, LivingEntity target, LivingEntity user) {
-		EffectUtil.addEffect(target, new MobEffectInstance(eff, dur, amp,
-				false, true, true), EffectUtil.AddReason.NONE, user);
+	@Override
+	public void inventoryTick(ItemStack stack, Level level, Entity entity, int index, boolean sel) {
+		if (index <= 36 && !sel || !isEnabled() || !(entity instanceof LivingEntity le)) return;
+		for (var e : EquipmentSlot.values()) {
+			if (isValidSlot(e) && le.getItemBySlot(e) == stack) {
+				tick(stack, le);
+				return;
+			}
+		}
 	}
 
 }

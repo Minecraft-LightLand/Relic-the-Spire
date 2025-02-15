@@ -69,7 +69,7 @@ public class PotionBelt extends BaseRelicItem {
 	}
 
 	@Override
-	protected boolean specialTooltip(ItemStack stack) {
+	public boolean specialTooltip(ItemStack stack) {
 		return !getItems(stack).isEmpty();
 	}
 
@@ -81,7 +81,7 @@ public class PotionBelt extends BaseRelicItem {
 	}
 
 	@Override
-	protected void addText(List<Component> list, ItemStack stack) {
+	public void addText(List<Component> list, ItemStack stack) {
 		var stacks = getItems(stack);
 		if (stacks.isEmpty()) {
 			list.add(RtSLang.Special.POTION_BELT_DESC.gray(
@@ -102,6 +102,8 @@ public class PotionBelt extends BaseRelicItem {
 		if (self.getCount() != 1) return false;
 		if (action != ClickAction.SECONDARY || !slot.allowModification(player)) return false;
 		ItemStack inSlot = slot.getItem();
+		if (!inSlot.isEmpty() && !inSlot.is(Items.POTION) && !inSlot.is(Items.SPLASH_POTION) && !inSlot.is(Items.LINGERING_POTION))
+			return false;
 		var list = getItems(self);
 		if (inSlot.isEmpty()) {
 			if (list.isEmpty()) return false;
@@ -134,6 +136,8 @@ public class PotionBelt extends BaseRelicItem {
 	public boolean overrideOtherStackedOnMe(ItemStack self, ItemStack carried, Slot slot, ClickAction action, Player user, SlotAccess carriedAccess) {
 		if (self.getCount() != 1) return false;
 		if (action != ClickAction.SECONDARY || !slot.allowModification(user)) return false;
+		if (!carried.isEmpty() && !carried.is(Items.POTION) && !carried.is(Items.SPLASH_POTION) && !carried.is(Items.LINGERING_POTION))
+			return false;
 		var list = getItems(self);
 		if (carried.isEmpty()) {
 			if (list.isEmpty()) return false;

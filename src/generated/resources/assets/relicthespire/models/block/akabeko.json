@@ -1,0 +1,7 @@
+{
+  "parent": "relicthespire:custom/akabeko",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "relicthespire:block/akabeko"
+  }
+}

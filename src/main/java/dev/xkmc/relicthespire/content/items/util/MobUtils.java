@@ -1,4 +1,4 @@
-package dev.xkmc.relicthespire.content.items.core;
+package dev.xkmc.relicthespire.content.items.util;
 
 import dev.xkmc.relicthespire.init.data.RtSModConfig;
 import dev.xkmc.relicthespire.init.data.RtSTagGen;

@@ -1,4 +1,4 @@
-package dev.xkmc.relicthespire.content.items.core;
+package dev.xkmc.relicthespire.content.items.util;
 
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.world.level.Level;

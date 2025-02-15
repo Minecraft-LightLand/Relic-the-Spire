@@ -1,4 +1,3 @@
-
 package dev.xkmc.relicthespire.content.client;
 
 import net.minecraft.world.inventory.tooltip.TooltipComponent;

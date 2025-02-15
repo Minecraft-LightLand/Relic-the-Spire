@@ -4,6 +4,7 @@ import dev.xkmc.l2library.capability.player.PlayerCapabilityHolder;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityNetworkHandler;
 import dev.xkmc.l2library.capability.player.PlayerCapabilityTemplate;
 import dev.xkmc.l2serial.serialization.SerialClass;
+import dev.xkmc.relicthespire.content.items.core.IBaseRelicItem;
 import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
 import dev.xkmc.relicthespire.init.RelicTheSpire;
 import net.minecraft.server.level.ServerPlayer;
@@ -27,6 +28,9 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 			new PlayerCapabilityHolder<>(RelicTheSpire.loc("battle_tracker"),
 					CAPABILITY, BattleTracker.class, BattleTracker::new, PlayerCapabilityNetworkHandler::new);
 
+	public static void heal(LivingEntity le, float amount) {
+		le.getCapability(CAPABILITY).resolve().ifPresentOrElse(e -> e.toHeal += amount, () -> le.heal(amount));
+	}
 
 	@SerialClass.SerialField
 	private final HashMap<UUID, TrackerEntry> entries = new HashMap<>();
@@ -38,6 +42,8 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 	private int attackCount = 0;
 	@SerialClass.SerialField
 	private long attackStamp = 0;
+
+	private float toHeal = 0;
 
 	@Override
 	public void onClone(boolean isWasDeath) {
@@ -54,6 +60,10 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 	public void tick() {
 		if (player instanceof ServerPlayer sp) {
 			updateActivity(sp, false);
+			if (toHeal > 0) {
+				player.heal(toHeal);
+			}
+			toHeal = 0;
 		}
 	}
 
@@ -78,12 +88,12 @@ public class BattleTracker extends PlayerCapabilityTemplate<BattleTracker> {
 	}
 
 	private void activate(ServerPlayer sp) {
-		ITriggerRelicItem.onTrigger(sp, (stack, e) -> e.onEnterCombatMode(stack, sp));
+		IBaseRelicItem.onSearch(sp, ITriggerRelicItem.class, (stack, e) -> e.onEnterCombatMode(stack, sp));
 	}
 
 	private void deactivate(ServerPlayer sp, boolean kill) {
 		if (kill) {
-			ITriggerRelicItem.onTrigger(sp, (stack, e) -> e.killLastTarget(stack, sp));
+			IBaseRelicItem.onSearch(sp, ITriggerRelicItem.class, (stack, e) -> e.killLastTarget(stack, sp));
 		}
 		attackCount = 0;
 	}

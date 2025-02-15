@@ -1,0 +1,7 @@
+{
+  "parent": "relicthespire:custom/red_skull",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "relicthespire:block/red_skull"
+  }
+}

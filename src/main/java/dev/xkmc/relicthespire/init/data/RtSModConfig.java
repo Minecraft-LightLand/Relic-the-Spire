@@ -38,13 +38,13 @@ public class RtSModConfig {
 			public final ForgeConfigSpec.IntValue orichalcumInterval;
 			public final ForgeConfigSpec.DoubleValue orichalcumAbsorption;
 
-			public final ForgeConfigSpec.IntValue redSkullStrengthAmplifier;
+			public final ForgeConfigSpec.IntValue redSkullAttack;
 			public final ForgeConfigSpec.DoubleValue redSkullHealthPercentage;
 
 			public final ForgeConfigSpec.IntValue potionBeltMaxSlot;
 			public final ForgeConfigSpec.IntValue potionBeltMaxCount;
 
-			public final ForgeConfigSpec.IntValue vajraStrengthAmplifier;
+			public final ForgeConfigSpec.IntValue vajraAttack;
 
 			public final ForgeConfigSpec.DoubleValue preservedInsectDebuff;
 
@@ -61,7 +61,7 @@ public class RtSModConfig {
 						.defineInRange("burningBloodHeal", 6d, 0, 1000);
 
 				bagOfMarblesDuration = builder.comment("Bag of Marbles: duration of fragile effect to inflict, in ticks")
-						.defineInRange("bagOfMarblesDuration", 3000, 0, 1000000);
+						.defineInRange("bagOfMarblesDuration", 9000, 0, 1000000);
 
 				bloodVialHeal = builder.comment("Blood Vial: amount to heal after killing last target in combat")
 						.defineInRange("bloodVialHeal", 2d, 0, 1000);
@@ -82,8 +82,8 @@ public class RtSModConfig {
 				orichalcumAbsorption = builder.comment("Orichalcum: amount of absorption to grant")
 						.defineInRange("orichalcumAbsorption", 6d, 0, 1000);
 
-				redSkullStrengthAmplifier = builder.comment("Red Skull: Strength effect amplifier")
-						.defineInRange("redSkullStrengthAmplifier", 2, 0, 100);
+				redSkullAttack = builder.comment("Red Skull: attack bonus")
+						.defineInRange("redSkullAttack", 3, 0, 100);
 				redSkullHealthPercentage = builder.comment("Red Skull: percentage max health to trigger")
 						.defineInRange("redSkullHealthPercentage", 0.5d, 0, 1);
 
@@ -92,8 +92,8 @@ public class RtSModConfig {
 				potionBeltMaxCount = builder.comment("Potion Belt: max number of potions per slot")
 						.defineInRange("potionBeltMaxCount", 5, 1, 64);
 
-				vajraStrengthAmplifier = builder.comment("Vajra: Strength effect amplifier")
-						.defineInRange("vajraStrengthAmplifier", 0, 0, 100);
+				vajraAttack = builder.comment("Vajra: attack bonus")
+						.defineInRange("vajraAttack", 1, 0, 100);
 
 				preservedInsectDebuff = builder.comment("Preserved Insect: max health to reduce")
 						.defineInRange("perservedInsectDebuff", 0.25, 0, 1);
