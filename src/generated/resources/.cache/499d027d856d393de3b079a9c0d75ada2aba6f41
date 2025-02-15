@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-15T15:02:41.171444	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-02-15T16:22:57.21031	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 9955edb062a64bf68037be334c0a72a72cea8835 assets/relicthespire/blockstates/akabeko.json
 fd91def2544a7d94b31aef6277e15151b021ecc3 assets/relicthespire/blockstates/blight_block.json
 98286099f987cc2f3de7bb53a298e3d46228c74a assets/relicthespire/blockstates/green_torch.json
@@ -29,11 +29,11 @@ bb4ff5f445353ceee025ea7f70d8126d96b90968 assets/relicthespire/models/item/green_
 249de96bf2f2be348bcdf3c111c9dbe082a462c9 assets/relicthespire/models/item/orichalcum.json
 1a642b29bb0a946737df833615a4363bc623fe88 assets/relicthespire/models/item/pen_nib.json
 3496f91d747930b1d34826d5f6c99ea0a60f1329 assets/relicthespire/models/item/potion_belt.json
-5af469b7722c8d00a3516771865e91114b064eaa assets/relicthespire/models/item/red_skull.json
-5e50c23da1425106f79eb91e04ecb564721a9fdd assets/relicthespire/models/item/snake_skull.json
+a1983a469501b209b18b0b75a75557804d42c79d assets/relicthespire/models/item/red_skull.json
+bc67bb56b00e64eb2ecdbb1f5fc2cbfd1c9b865f assets/relicthespire/models/item/snake_skull.json
 fd7f69032b2e51ecc1a74b76dbcc6a0a663cb936 assets/relicthespire/models/item/the_boot.json
 c90c9c7acf6e7d6fea67068869d8d8dce79bfce7 assets/relicthespire/models/item/toy_ornithopter.json
-4dfe2507931d43868ed9d02157a9f2ab84eb8d08 assets/relicthespire/models/item/vajra.json
+48714679f18e30b9f89bbf598d1bf0e736a2ade9 assets/relicthespire/models/item/vajra.json
 4596dbb64016337ecb259c4bc87d20f6669c44da data/curios/tags/items/belt.json
 ee8fda4cce202c89ee58228891dc1cac1c2b418b data/curios/tags/items/body.json
 295ebb54e28137ead6a1ed15e08007b4876d2097 data/curios/tags/items/charm.json

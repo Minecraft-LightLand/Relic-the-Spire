@@ -3,7 +3,7 @@ package dev.xkmc.relicthespire.content.items.trigger;
 import dev.xkmc.l2library.util.math.MathHelper;
 import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
 import dev.xkmc.relicthespire.content.items.core.ITriggerRelicItem;
-import dev.xkmc.relicthespire.content.items.core.MobUtils;
+import dev.xkmc.relicthespire.content.items.util.MobUtils;
 import dev.xkmc.relicthespire.init.data.RtSLang;
 import dev.xkmc.relicthespire.init.data.RtSModConfig;
 import net.minecraft.network.chat.Component;

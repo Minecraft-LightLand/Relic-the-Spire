@@ -3,6 +3,7 @@ package dev.xkmc.relicthespire.init.registrate;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -30,6 +31,7 @@ import dev.xkmc.relicthespire.content.items.trigger.BagOfMarbles;
 import dev.xkmc.relicthespire.content.items.trigger.BloodVial;
 import dev.xkmc.relicthespire.content.items.trigger.BurningBlood;
 import dev.xkmc.relicthespire.init.RelicTheSpire;
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +40,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -49,7 +52,9 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -133,21 +138,25 @@ public class RtSItems {
 
 			THE_BOOT = curio("the_boot", TheBoot::new, "feet");
 
-			RED_SKULL = curioBlock("red_skull", RedSkull::new, "head", RtSItems::skullModel,
+			RED_SKULL = curioBlock("red_skull", RedSkull::new, "head",
+					RtSItems::skullModel, RtSItems::head,
 					BlockProxy.HORIZONTAL, WallHorizontalBlock.of(4, 0, 4, 4, 4, 8, 8, 8, 8));
-			SNAKE_SKULL = curioBlock("snake_skull", SnakeSkull::new, "head", RtSItems::skullModel,
+			SNAKE_SKULL = curioBlock("snake_skull", SnakeSkull::new, "head",
+					RtSItems::skullModel, RtSItems::head,
 					BlockProxy.HORIZONTAL, WallHorizontalBlock.of(4, 0, 2, 4, 4, 6, 8, 8, 10));
 
 			BAG_OF_MARBLES = curio("bag_of_marbles", BagOfMarbles::new, "belt");
 			BLOOD_VIAL = curio("blood_vial", BloodVial::new, "belt");
 			POTION_BELT = curio("potion_belt", PotionBelt::new, "belt");
-			VAJRA = curio("vajra", Vajra::new, "belt");
+			VAJRA = curio("vajra", Vajra::new, "belt", RtSItems::custom);
 
-			ODDLY_SMOOTH_STONE = curioBlock("oddly_smooth_stone", OddlySmoothStone::new, "charm", RtSItems::horizontalModel,
+			ODDLY_SMOOTH_STONE = curioBlock("oddly_smooth_stone", OddlySmoothStone::new, "charm",
+					RtSItems::horizontalModel, RtSItems::generated,
 					BlockProxy.HORIZONTAL, BaseHorizontalBlock.of(5, 0, 6, 11, 2, 10));
 			ORICHALCUM = curio("orichalcum", Orichalcum::new, "charm");
 			//PRESERVED_INSECT = reg("preserved_insect", PreservedInsect::new, "charm");
-			AKABEKO = curioBlock("akabeko", Akabeko::new, "charm", RtSItems::horizontalModel,
+			AKABEKO = curioBlock("akabeko", Akabeko::new, "charm",
+					RtSItems::horizontalModel, RtSItems::generated,
 					BlockProxy.HORIZONTAL, BaseHorizontalBlock.of(5, 0, 1, 11, 8, 15));
 			PEN_NIB = curio("pen_nib", PenNib::new, "charm");
 			TOY_ORNITHOPTER = curio("toy_ornithopter", ToyOrnithopter::new, "charm");
@@ -155,24 +164,31 @@ public class RtSItems {
 	}
 
 	private static <T extends BaseRelicItem> ItemEntry<T> curio(String id, NonNullFunction<Item.Properties, T> factory, String slot) {
+		return curio(id, factory, slot, RtSItems::generated);
+	}
+
+	private static <T extends BaseRelicItem> ItemEntry<T> curio(
+			String id, NonNullFunction<Item.Properties, T> factory, String slot,
+			NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> itemModel
+	) {
 		ALL_CURIOS.add(id);
-		return RelicTheSpire.REGISTRATE.item(id, factory)
+		return RelicTheSpire.REGISTRATE.item(id, factory).model(itemModel)
 				.tag(ItemTags.create(new ResourceLocation("curios", slot)))
 				.register();
 	}
 
-
 	private static <T extends BlockRelicItem> ItemEntry<T> curioBlock(
 			String id, NonNullBiFunction<Block, Item.Properties, T> factory, String slot,
-			NonNullBiConsumer<DataGenContext<Block, DelegateBlock>, RegistrateBlockstateProvider> model,
+			NonNullBiConsumer<DataGenContext<Block, DelegateBlock>, RegistrateBlockstateProvider> blockModel,
+			NonNullBiConsumer<DataGenContext<Item, T>, RegistrateItemModelProvider> itemModel,
 			BlockMethod... methods) {
 		ALL_CURIOS.add(id);
 		var prop = BlockBehaviour.Properties.of().strength(1).pushReaction(PushReaction.DESTROY);
 		var builder = RelicTheSpire.REGISTRATE.block(id, p ->
-				DelegateBlock.newBaseBlock(prop, methods)).blockstate(model);
+				DelegateBlock.newBaseBlock(prop, methods)).blockstate(blockModel);
 		builder.tag(BlockTags.MINEABLE_WITH_PICKAXE).defaultLoot().register();
 		var item = builder.item(factory);
-		return item.model((ctx, pvd) -> pvd.generated(ctx))
+		return item.model(itemModel)
 				.tag(ItemTags.create(new ResourceLocation("curios", slot)))
 				.register();
 	}
@@ -194,6 +210,39 @@ public class RtSItems {
 				.texture("all", pvd.modLoc("block/" + ctx.getName()))
 				.renderType("cutout");
 		pvd.horizontalBlock(ctx.get(), e -> e.getValue(WallHorizontalBlock.WALL) ? wall : ground);
+	}
+
+	private static <T extends Item> void generated(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
+		pvd.generated(ctx);
+	}
+
+	private static <T extends Item> void head(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
+		var itemModel = new ItemModelBuilder(null, pvd.existingFileHelper)
+				.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("item/generated")))
+				.texture("layer0", pvd.modLoc("item/" + ctx.getName()));
+		var blockModel = new ItemModelBuilder(null, pvd.existingFileHelper)
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("block/" + ctx.getName())))
+				.renderType("cutout");
+		pvd.getBuilder("item/" + ctx.getName())
+				.guiLight(BlockModel.GuiLight.FRONT)
+				.customLoader(SeparateTransformsModelBuilder::begin)
+				.base(itemModel)
+				.perspective(ItemDisplayContext.HEAD, blockModel);
+	}
+
+	private static <T extends Item> void custom(DataGenContext<Item, T> ctx, RegistrateItemModelProvider pvd) {
+		var itemModel = new ItemModelBuilder(null, pvd.existingFileHelper)
+				.parent(new ModelFile.UncheckedModelFile(pvd.mcLoc("item/generated")))
+				.texture("layer0", pvd.modLoc("item/" + ctx.getName()));
+		var blockModel = new ItemModelBuilder(null, pvd.existingFileHelper)
+				.parent(new ModelFile.UncheckedModelFile(pvd.modLoc("custom/" + ctx.getName())))
+				.texture("all", pvd.modLoc("block/" + ctx.getName()))
+				.renderType("cutout");
+		pvd.getBuilder("item/" + ctx.getName())
+				.guiLight(BlockModel.GuiLight.FRONT)
+				.customLoader(SeparateTransformsModelBuilder::begin)
+				.base(blockModel)
+				.perspective(ItemDisplayContext.GUI, itemModel);
 	}
 
 	public static void register() {

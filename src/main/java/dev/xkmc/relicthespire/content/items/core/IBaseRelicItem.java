@@ -3,6 +3,7 @@ package dev.xkmc.relicthespire.content.items.core;
 import dev.xkmc.l2library.base.effects.EffectUtil;
 import dev.xkmc.l2serial.util.Wrappers;
 import dev.xkmc.relicthespire.content.items.util.TokenRelicComponent;
+import dev.xkmc.relicthespire.content.items.util.TooltipHelper;
 import dev.xkmc.relicthespire.init.data.RtSLang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

@@ -1,6 +1,16 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "relicthespire:item/red_skull"
+  "base": {
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "relicthespire:item/red_skull"
+    }
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "head": {
+      "parent": "relicthespire:block/red_skull",
+      "render_type": "minecraft:cutout"
+    }
   }
 }

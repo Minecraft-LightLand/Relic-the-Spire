@@ -1,6 +1,16 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "relicthespire:item/snake_skull"
+  "base": {
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "relicthespire:item/snake_skull"
+    }
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "head": {
+      "parent": "relicthespire:block/snake_skull",
+      "render_type": "minecraft:cutout"
+    }
   }
 }
