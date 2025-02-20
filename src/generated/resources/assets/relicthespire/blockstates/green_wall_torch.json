@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
       "model": "relicthespire:block/green_wall_torch"
+    },
+    "facing=north": {
+      "model": "relicthespire:block/green_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "relicthespire:block/green_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "relicthespire:block/green_wall_torch",
+      "y": 180
     }
   }
 }

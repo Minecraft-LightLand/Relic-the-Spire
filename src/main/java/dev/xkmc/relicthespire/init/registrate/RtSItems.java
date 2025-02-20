@@ -119,9 +119,9 @@ public class RtSItems {
 			GREEN_WALL_TORCH = RelicTheSpire.REGISTRATE.block("green_wall_torch",
 							p -> new ModWallTorchBlock(p, BLIGHT_FLAME::get))
 					.initialProperties(() -> Blocks.WALL_TORCH).properties(p -> p.lightLevel(s -> 12))
-					.blockstate((ctx, pvd) -> pvd.simpleBlock(ctx.get(),
-							pvd.models().torchWall(ctx.getName(), pvd.modLoc("block/green_torch"))
-									.renderType("cutout")))
+					.blockstate((ctx, pvd) -> pvd.horizontalBlock(ctx.get(),
+							state -> pvd.models().torchWall(ctx.getName(), pvd.modLoc("block/green_torch"))
+									.renderType("cutout"), 90))
 					.setData(ProviderType.LANG, NonNullBiConsumer.noop())
 					.register();
 			RelicTheSpire.REGISTRATE.item("green_torch", p -> new StandingAndWallBlockItem(

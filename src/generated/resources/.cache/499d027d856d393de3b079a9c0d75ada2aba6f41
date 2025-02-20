@@ -1,8 +1,8 @@
-// 1.20.1	2025-02-15T16:22:57.21031	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-02-19T09:08:00.290283	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 9955edb062a64bf68037be334c0a72a72cea8835 assets/relicthespire/blockstates/akabeko.json
 fd91def2544a7d94b31aef6277e15151b021ecc3 assets/relicthespire/blockstates/blight_block.json
 98286099f987cc2f3de7bb53a298e3d46228c74a assets/relicthespire/blockstates/green_torch.json
-d4d7af1eb07ba3fa17f7dac77dd593c8095fadae assets/relicthespire/blockstates/green_wall_torch.json
+5e24e9808455c9d70cdac0745a4df764306b3b52 assets/relicthespire/blockstates/green_wall_torch.json
 7fef5d0a7a636cc97cdf7386ff8dcb19af2c8fd4 assets/relicthespire/blockstates/oddly_smooth_stone.json
 abcc1526c553f97f96eab8f3a21722036185e682 assets/relicthespire/blockstates/red_skull.json
 129d3c36f53b304489df97c178f835b5f9f0c91d assets/relicthespire/blockstates/snake_skull.json
