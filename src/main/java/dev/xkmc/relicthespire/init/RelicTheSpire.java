@@ -10,6 +10,7 @@ import dev.xkmc.relicthespire.init.data.RtSModConfig;
 import dev.xkmc.relicthespire.init.data.RtSRecipe;
 import dev.xkmc.relicthespire.init.data.SlotProvider;
 import dev.xkmc.relicthespire.init.registrate.RtSEffect;
+import dev.xkmc.relicthespire.init.registrate.RtSEntities;
 import dev.xkmc.relicthespire.init.registrate.RtSItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -28,6 +29,7 @@ public class RelicTheSpire {
 	public RelicTheSpire() {
 		RtSItems.register();
 		RtSEffect.register();
+		RtSEntities.register();
 		RtSModConfig.init();
 		BattleTracker.register();
 

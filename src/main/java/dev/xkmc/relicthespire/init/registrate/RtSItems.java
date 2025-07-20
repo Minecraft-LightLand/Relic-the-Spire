@@ -33,6 +33,7 @@ import dev.xkmc.relicthespire.content.items.trigger.BagOfMarbles;
 import dev.xkmc.relicthespire.content.items.trigger.BloodVial;
 import dev.xkmc.relicthespire.content.items.trigger.BurningBlood;
 import dev.xkmc.relicthespire.init.RelicTheSpire;
+import dev.xkmc.relicthespire.init.data.RtSTagGen;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -47,6 +48,7 @@ import net.minecraft.world.item.StandingAndWallBlockItem;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.PushReaction;
@@ -70,6 +72,7 @@ public class RtSItems {
 	public static final RegistryEntry<SimpleParticleType> BLIGHT_FLAME;
 	public static final BlockEntry<ModTorchBlock> GREEN_TORCH;
 	public static final BlockEntry<ModWallTorchBlock> GREEN_WALL_TORCH;
+	public static final BlockEntry<CarpetBlock> PLAIN_CARPET, DECORATED_CARPET;
 
 	public static final ItemEntry<Item> CORRUPT_POTION;
 	public static final ItemEntry<RtSPotion> BLOOD_POTION, FLEX_POTION;
@@ -135,6 +138,20 @@ public class RtSItems {
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/" + ctx.getName())))
 					.setData(ProviderType.LANG, NonNullBiConsumer.noop())
 					.register();
+
+			PLAIN_CARPET = RelicTheSpire.REGISTRATE.block("plain_merchant_carpet", CarpetBlock::new)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().carpet(ctx.getName(), pvd.modLoc("block/" + ctx.getName()))))
+					.tag(BlockTags.WOOL_CARPETS)
+					.simpleItem()
+					.register();
+
+			DECORATED_CARPET = RelicTheSpire.REGISTRATE.block("decorated_merchant_carpet", CarpetBlock::new)
+					.blockstate((ctx, pvd) ->
+							pvd.simpleBlock(ctx.get(), pvd.models().carpet(ctx.getName(), pvd.modLoc("block/" + ctx.getName()))))
+					.tag(BlockTags.WOOL_CARPETS)
+					.simpleItem()
+					.register();
 		}
 
 		{
@@ -147,36 +164,42 @@ public class RtSItems {
 							p -> new RtSPotion(p, RtSEffect.BLOOD_POTION))
 					.properties(p -> p.stacksTo(1))
 					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.tag(RtSTagGen.POTIONS)
 					.register();
 
 			FLEX_POTION = RelicTheSpire.REGISTRATE.item("flex_potion",
 							p -> new RtSPotion(p, RtSEffect.FLEX_POTION))
 					.properties(p -> p.stacksTo(1))
 					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.tag(RtSTagGen.POTIONS)
 					.register();
 
 			WEAK_POTION = RelicTheSpire.REGISTRATE.item("weak_potion",
 							p -> new RtSThrowablePotion(p, RtSEffect.WEAK_POTION))
 					.properties(p -> p.stacksTo(1))
 					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.tag(RtSTagGen.POTIONS)
 					.register();
 
 			FEAR_POTION = RelicTheSpire.REGISTRATE.item("fear_potion",
 							p -> new RtSThrowablePotion(p, RtSEffect.FEAR_POTION))
 					.properties(p -> p.stacksTo(1))
 					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.tag(RtSTagGen.POTIONS)
 					.register();
 
 			EXPLOSIVE_POTION = RelicTheSpire.REGISTRATE.item("explosive_potion",
 							p -> new RtSThrowablePotion(p, RtSEffect.EXPLOSIVE_POTION))
 					.properties(p -> p.stacksTo(1))
 					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.tag(RtSTagGen.POTIONS)
 					.register();
 
 			FLAME_POTION = RelicTheSpire.REGISTRATE.item("flame_potion",
 							p -> new RtSThrowablePotion(p, RtSEffect.FLAME_POTION))
 					.properties(p -> p.stacksTo(1))
 					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.tag(RtSTagGen.POTIONS)
 					.register();
 		}
 
@@ -222,7 +245,7 @@ public class RtSItems {
 	) {
 		ALL_CURIOS.add(id);
 		return RelicTheSpire.REGISTRATE.item(id, factory).model(itemModel)
-				.tag(ItemTags.create(new ResourceLocation("curios", slot)))
+				.tag(ItemTags.create(new ResourceLocation("curios", slot)), RtSTagGen.RELICS)
 				.register();
 	}
 
@@ -238,7 +261,7 @@ public class RtSItems {
 		builder.tag(BlockTags.MINEABLE_WITH_PICKAXE).defaultLoot().register();
 		var item = builder.item(factory);
 		return item.model(itemModel)
-				.tag(ItemTags.create(new ResourceLocation("curios", slot)))
+				.tag(ItemTags.create(new ResourceLocation("curios", slot)), RtSTagGen.RELICS)
 				.register();
 	}
 
