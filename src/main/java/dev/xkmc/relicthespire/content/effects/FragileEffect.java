@@ -18,9 +18,7 @@ public class FragileEffect extends InherentEffect {
 		addAttributeModifier(L2DamageTracker.REDUCTION.get(), uuid, 0.25, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	}
 
-	public static void inflictActive(int dur, LivingEntity target, LivingEntity user) {
-		int amp = 1;
-		//TODO modify amp
+	public static void inflictActive(int dur, LivingEntity target, LivingEntity user, int amp) {
 		EffectUtil.addEffect(target, new MobEffectInstance(RtSEffect.FRAGILE.get(), dur, amp,
 				false, true, true), EffectUtil.AddReason.NONE, user);
 	}

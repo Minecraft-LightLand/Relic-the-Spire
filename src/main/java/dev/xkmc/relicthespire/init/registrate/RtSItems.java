@@ -23,6 +23,8 @@ import dev.xkmc.relicthespire.content.items.attack.PenNib;
 import dev.xkmc.relicthespire.content.items.attack.TheBoot;
 import dev.xkmc.relicthespire.content.items.core.BaseRelicItem;
 import dev.xkmc.relicthespire.content.items.core.BlockRelicItem;
+import dev.xkmc.relicthespire.content.items.potion.RtSPotion;
+import dev.xkmc.relicthespire.content.items.potion.RtSThrowablePotion;
 import dev.xkmc.relicthespire.content.items.special.PotionBelt;
 import dev.xkmc.relicthespire.content.items.special.SnakeSkull;
 import dev.xkmc.relicthespire.content.items.special.ToyOrnithopter;
@@ -68,6 +70,10 @@ public class RtSItems {
 	public static final RegistryEntry<SimpleParticleType> BLIGHT_FLAME;
 	public static final BlockEntry<ModTorchBlock> GREEN_TORCH;
 	public static final BlockEntry<ModWallTorchBlock> GREEN_WALL_TORCH;
+
+	public static final ItemEntry<Item> CORRUPT_POTION;
+	public static final ItemEntry<RtSPotion> BLOOD_POTION, FLEX_POTION;
+	public static final ItemEntry<RtSThrowablePotion> WEAK_POTION, FEAR_POTION, EXPLOSIVE_POTION, FLAME_POTION;
 
 	public static final List<String> ALL_CURIOS = new ArrayList<>();
 
@@ -128,6 +134,49 @@ public class RtSItems {
 							GREEN_TORCH.get(), GREEN_WALL_TORCH.get(), p, Direction.DOWN))
 					.model((ctx, pvd) -> pvd.generated(ctx, pvd.modLoc("block/" + ctx.getName())))
 					.setData(ProviderType.LANG, NonNullBiConsumer.noop())
+					.register();
+		}
+
+		{
+
+			CORRUPT_POTION = RelicTheSpire.REGISTRATE.item("corrupt_potion", Item::new)
+					.properties(p -> p.stacksTo(1))
+					.register();
+
+			BLOOD_POTION = RelicTheSpire.REGISTRATE.item("blood_potion",
+							p -> new RtSPotion(p, RtSEffect.BLOOD_POTION))
+					.properties(p -> p.stacksTo(1))
+					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.register();
+
+			FLEX_POTION = RelicTheSpire.REGISTRATE.item("flex_potion",
+							p -> new RtSPotion(p, RtSEffect.FLEX_POTION))
+					.properties(p -> p.stacksTo(1))
+					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.register();
+
+			WEAK_POTION = RelicTheSpire.REGISTRATE.item("weak_potion",
+							p -> new RtSThrowablePotion(p, RtSEffect.WEAK_POTION))
+					.properties(p -> p.stacksTo(1))
+					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.register();
+
+			FEAR_POTION = RelicTheSpire.REGISTRATE.item("fear_potion",
+							p -> new RtSThrowablePotion(p, RtSEffect.FEAR_POTION))
+					.properties(p -> p.stacksTo(1))
+					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.register();
+
+			EXPLOSIVE_POTION = RelicTheSpire.REGISTRATE.item("explosive_potion",
+							p -> new RtSThrowablePotion(p, RtSEffect.EXPLOSIVE_POTION))
+					.properties(p -> p.stacksTo(1))
+					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
+					.register();
+
+			FLAME_POTION = RelicTheSpire.REGISTRATE.item("flame_potion",
+							p -> new RtSThrowablePotion(p, RtSEffect.FLAME_POTION))
+					.properties(p -> p.stacksTo(1))
+					.tab(TAB.getKey(), (a, b) -> b.accept(a.get().getDefaultInstance()))
 					.register();
 		}
 

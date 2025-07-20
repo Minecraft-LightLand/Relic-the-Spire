@@ -24,7 +24,7 @@ public class BagOfMarbles extends BaseRelicItem implements ITriggerRelicItem {
 
 	@Override
 	public void onMobJoinBattle(ItemStack stack, LivingEntity self, LivingEntity target) {
-		FragileEffect.inflictActive(dur(), target, self);
+		FragileEffect.inflictActive(dur(), target, self, 1);
 	}
 
 	@Override

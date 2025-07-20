@@ -15,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod(RelicTheSpire.MODID)
 @Mod.EventBusSubscriber(modid = RelicTheSpire.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -31,6 +32,11 @@ public class RelicTheSpire {
 		BattleTracker.register();
 
 		AttackEventHandler.register(4573, new RtSAttackListener());
+	}
+
+	@SubscribeEvent
+	public static void onCommonInit(FMLCommonSetupEvent event) {
+		RtSEffect.registerPotionRecipes();
 	}
 
 	@SubscribeEvent

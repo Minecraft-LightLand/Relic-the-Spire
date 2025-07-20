@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-19T09:08:00.290283	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+// 1.20.1	2025-07-20T17:05:44.494412	Registrate Provider for relicthespire [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
 9955edb062a64bf68037be334c0a72a72cea8835 assets/relicthespire/blockstates/akabeko.json
 fd91def2544a7d94b31aef6277e15151b021ecc3 assets/relicthespire/blockstates/blight_block.json
 98286099f987cc2f3de7bb53a298e3d46228c74a assets/relicthespire/blockstates/green_torch.json
@@ -6,8 +6,8 @@ fd91def2544a7d94b31aef6277e15151b021ecc3 assets/relicthespire/blockstates/blight
 7fef5d0a7a636cc97cdf7386ff8dcb19af2c8fd4 assets/relicthespire/blockstates/oddly_smooth_stone.json
 abcc1526c553f97f96eab8f3a21722036185e682 assets/relicthespire/blockstates/red_skull.json
 129d3c36f53b304489df97c178f835b5f9f0c91d assets/relicthespire/blockstates/snake_skull.json
-23276ab7f1e6b0335552e238d9914bde425b7b87 assets/relicthespire/lang/en_ud.json
-3c67db0d5057bb3ee2960fe80e7d140a5f5bebe6 assets/relicthespire/lang/en_us.json
+322785633cb09455970265ca3265f1810c3501b4 assets/relicthespire/lang/en_ud.json
+3ca6af698a62b418cb47ed468a8934417252af25 assets/relicthespire/lang/en_us.json
 df9bf37c05f6a5739c621f29efe1e4a9df1499db assets/relicthespire/models/block/akabeko.json
 5c48b8b95da43be6fec7bc7b6b7b2137791bd07a assets/relicthespire/models/block/blight_block.json
 99ad85dc3049e5aa9da1453bad6806d250f617b4 assets/relicthespire/models/block/green_torch.json
@@ -21,9 +21,15 @@ f79e784cd3af1ae267fce5a1a7ece56f08617f54 assets/relicthespire/models/block/snake
 f7d4e829e9ad214d40821e084c91f60b3965dd1b assets/relicthespire/models/item/bag_of_marbles.json
 d1a33ee1abb99968d2ebe8b3857dfd4c794235f4 assets/relicthespire/models/item/blight_block.json
 bf4bd1c9e99357b3363068b105534f14e9fadd17 assets/relicthespire/models/item/blight_shard.json
+36a7debee39551e4950aebc9be6093484b112f68 assets/relicthespire/models/item/blood_potion.json
 e4aac27ad13007b5123712f09312cf80f4c2076a assets/relicthespire/models/item/blood_vial.json
 3ea27884eaa883e8c7e1dbced576b9e7c612ac17 assets/relicthespire/models/item/bronze_scales.json
 29a6df4ce6635ae6bd72d8233e546fcac552495b assets/relicthespire/models/item/burning_blood.json
+25bdee7adff801d7cbbe36dd46ad84db327f975a assets/relicthespire/models/item/corrupt_potion.json
+fa9ac31baf1bc488ead02402f6c08799772e7185 assets/relicthespire/models/item/explosive_potion.json
+cf54c02a666029979d7f3b9b9aee965207e4338c assets/relicthespire/models/item/fear_potion.json
+d83eee3d9d56edda62e7e9373f4245e3e8a9910e assets/relicthespire/models/item/flame_potion.json
+5b6d479812a54f9ec641372004bbd5375d4b45b1 assets/relicthespire/models/item/flex_potion.json
 bb4ff5f445353ceee025ea7f70d8126d96b90968 assets/relicthespire/models/item/green_torch.json
 2bdf0b354faafa7fed178dc480e7342144ed603c assets/relicthespire/models/item/oddly_smooth_stone.json
 249de96bf2f2be348bcdf3c111c9dbe082a462c9 assets/relicthespire/models/item/orichalcum.json
@@ -34,6 +40,7 @@ bc67bb56b00e64eb2ecdbb1f5fc2cbfd1c9b865f assets/relicthespire/models/item/snake_
 fd7f69032b2e51ecc1a74b76dbcc6a0a663cb936 assets/relicthespire/models/item/the_boot.json
 c90c9c7acf6e7d6fea67068869d8d8dce79bfce7 assets/relicthespire/models/item/toy_ornithopter.json
 48714679f18e30b9f89bbf598d1bf0e736a2ade9 assets/relicthespire/models/item/vajra.json
+7a41c803578281ab1adf12eed3310e17f2b252f8 assets/relicthespire/models/item/weak_potion.json
 4596dbb64016337ecb259c4bc87d20f6669c44da data/curios/tags/items/belt.json
 ee8fda4cce202c89ee58228891dc1cac1c2b418b data/curios/tags/items/body.json
 295ebb54e28137ead6a1ed15e08007b4876d2097 data/curios/tags/items/charm.json
