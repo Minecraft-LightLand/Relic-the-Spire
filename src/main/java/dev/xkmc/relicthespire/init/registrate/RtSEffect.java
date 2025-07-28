@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.xkmc.l2library.serial.ingredients.PotionIngredient;
 import dev.xkmc.relicthespire.content.effects.*;
+import dev.xkmc.relicthespire.content.items.potion.DoublePotionRecipe;
 import dev.xkmc.relicthespire.init.RelicTheSpire;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.ItemTags;
@@ -74,6 +75,8 @@ public class RtSEffect {
 	}
 
 	public static void registerPotionRecipes() {
+		BrewingRecipeRegistry.addRecipe(new DoublePotionRecipe());
+
 		BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
 				new PotionIngredient(Potions.WATER),
 				Ingredient.of(RtSItems.BLIGHT_SHARD),

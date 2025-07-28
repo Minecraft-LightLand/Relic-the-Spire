@@ -7,6 +7,8 @@ import dev.xkmc.relicthespire.init.RelicTheSpire;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PotionItem;
+import net.minecraft.world.item.ThrowablePotionItem;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -20,7 +22,7 @@ public class RtSMiscEventHandler {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void onItemUse(PlayerInteractEvent.RightClickItem event) {
 		if (event.isCanceled()) return;
-		if (event.getItemStack().is(Items.SPLASH_POTION) || event.getItemStack().is(Items.LINGERING_POTION)) {
+		if (event.getItemStack().getItem() instanceof ThrowablePotionItem) {
 			ToyOrnithopter.trigger(event.getEntity(), event.getItemStack());
 			PotionBelt.onThrowPotion(event.getEntity(), event);
 		}
@@ -28,7 +30,7 @@ public class RtSMiscEventHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void onItemUseFinish(LivingEntityUseItemEvent.Finish event) {
-		if (event.getItem().is(Items.POTION)) {
+		if (event.getItem().getItem() instanceof PotionItem && !(event.getItem().getItem() instanceof ThrowablePotionItem)) {
 			ToyOrnithopter.trigger(event.getEntity(), event.getItem());
 			PotionBelt.consumePotion(event.getEntity(), event);
 		}

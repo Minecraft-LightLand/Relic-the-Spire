@@ -19,6 +19,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PotionItem;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -28,6 +29,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class PotionBelt extends BaseRelicItem {
+
+	public static boolean isPotion(ItemStack stack) {
+		return stack.getItem() instanceof PotionItem;
+	}
 
 	private static int getSlotCount(ItemStack belt) {
 		return RtSModConfig.COMMON.curios.potionBeltMaxSlot.get();
@@ -102,7 +107,7 @@ public class PotionBelt extends BaseRelicItem {
 		if (self.getCount() != 1) return false;
 		if (action != ClickAction.SECONDARY || !slot.allowModification(player)) return false;
 		ItemStack inSlot = slot.getItem();
-		if (!inSlot.isEmpty() && !inSlot.is(Items.POTION) && !inSlot.is(Items.SPLASH_POTION) && !inSlot.is(Items.LINGERING_POTION))
+		if (!inSlot.isEmpty() && !isPotion(inSlot))
 			return false;
 		var list = getItems(self);
 		if (inSlot.isEmpty()) {
@@ -136,7 +141,7 @@ public class PotionBelt extends BaseRelicItem {
 	public boolean overrideOtherStackedOnMe(ItemStack self, ItemStack carried, Slot slot, ClickAction action, Player user, SlotAccess carriedAccess) {
 		if (self.getCount() != 1) return false;
 		if (action != ClickAction.SECONDARY || !slot.allowModification(user)) return false;
-		if (!carried.isEmpty() && !carried.is(Items.POTION) && !carried.is(Items.SPLASH_POTION) && !carried.is(Items.LINGERING_POTION))
+		if (!carried.isEmpty() && !isPotion(carried))
 			return false;
 		var list = getItems(self);
 		if (carried.isEmpty()) {

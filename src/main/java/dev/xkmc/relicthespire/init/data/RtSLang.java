@@ -57,7 +57,7 @@ public class RtSLang {
 		}
 
 		default MutableComponent bulletBlue(MutableComponent... objs) {
-			return bullet(get(objs)).withStyle(ChatFormatting.BLUE);
+			return RtSLang.bullet(get(objs)).withStyle(ChatFormatting.BLUE);
 		}
 
 

@@ -61,7 +61,7 @@ public class RtSModConfig {
 						.defineInRange("burningBloodHeal", 6d, 0, 1000);
 
 				bagOfMarblesDuration = builder.comment("Bag of Marbles: duration of fragile effect to inflict, in ticks")
-						.defineInRange("bagOfMarblesDuration", 9000, 0, 1000000);
+						.defineInRange("bagOfMarblesDuration", 300, 0, 1000000);
 
 				bloodVialHeal = builder.comment("Blood Vial: amount to heal after killing last target in combat")
 						.defineInRange("bloodVialHeal", 2d, 0, 1000);

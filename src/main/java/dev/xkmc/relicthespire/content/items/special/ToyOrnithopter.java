@@ -23,6 +23,10 @@ public class ToyOrnithopter extends BaseRelicItem {
 		var item = RtSItems.TOY_ORNITHOPTER.get();
 		if (!item.isEnabled()) return;
 		if (PotionUtils.getMobEffects(stack).isEmpty()) return;
+		if (player.getMainHandItem().is(item) || player.getOffhandItem().is(item)) {
+			BattleTracker.heal(player, (float) amount());
+			return;
+		}
 		CuriosApi.getCuriosInventory(player).resolve().flatMap(e -> e.findFirstCurio(item))
 				.ifPresent(e -> BattleTracker.heal(player, (float) amount()));
 	}

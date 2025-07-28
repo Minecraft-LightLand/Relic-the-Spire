@@ -53,7 +53,7 @@ public abstract class BaseRelicItem extends Item implements ICurioItem, IBaseRel
 
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int index, boolean sel) {
-		if (index <= 36 && !sel || !isEnabled() || !(entity instanceof LivingEntity le)) return;
+		if (index != 0 && index <= 36 && !sel || !isEnabled() || !(entity instanceof LivingEntity le)) return;
 		for (var e : EquipmentSlot.values()) {
 			if (isValidSlot(e) && le.getItemBySlot(e) == stack) {
 				tick(stack, le);
